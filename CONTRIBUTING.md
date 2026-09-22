@@ -38,7 +38,7 @@ The pre-commit hooks only check files. Run `pnpm run format` to fix formatting i
 
 ## Changing or adding a config
 
-Configs are written in TypeScript and live in `src/configs/*.ts`. Import other files with the `.ts` extension, because the compiler rewrites it to `.js`. The `exports` map in `package.json` exposes each config without the extension. The package entry point, `src/index.ts`, exports the default config, which is `javascript`.
+Configs are written in TypeScript and live in `src/configs/*.ts`. Import other files with the `.ts` extension, because the compiler rewrites it to `.js`. The `exports` map in `package.json` lists each config under its name without the extension, so add an entry there when you add a config. The package entry point, `src/index.ts`, exports the default config, which is `javascript`.
 
 Build every config with `defineConfig` from `eslint/config` and give it a `name`, so it shows up in the ESLint config inspector. Set `files` on every config object, so a config only applies to the file types it is written for.
 
