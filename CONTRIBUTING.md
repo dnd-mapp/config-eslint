@@ -34,7 +34,7 @@ Newly published releases are held back for three days through `minimumReleaseAge
 | `pre-commit` | Prettier, markdownlint-cli2, and ESLint checks | The staged files          |
 | `commit-msg` | commitlint                                     | The message of the commit |
 
-The pre-commit hooks only check files. Run `pnpm run format` and `pnpm run lint-fix` to fix what the tools can, and stage the result.
+The pre-commit hooks only check files. Run `pnpm run format` to fix formatting issues, and `pnpm exec eslint --fix` to apply the fixes that ESLint can make. Stage the result.
 
 ## Changing or adding a config
 
@@ -64,20 +64,19 @@ Tests use Vitest and lint small code samples. The `javascript` tests use the `Li
 
 The repository lints itself with the configs it publishes. The `eslint.config.ts` file in the root imports the `javascript` and `typescript` configs from `src`, so every source and script file is checked by the rules that consumers get. ESLint 10 loads the TypeScript config file through the type stripping of Node.js, so no extra loader is needed.
 
-Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `lint`, `typecheck`, `build`, and `test-ci`. Run them yourself before you open a pull request.
+Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `lint-ts`, `typecheck`, `build`, and `test-ci`. Run them yourself before you open a pull request.
 
 ```bash
 pnpm run format-check
 pnpm run format
 pnpm run lint-md
-pnpm run lint
-pnpm run lint-fix
+pnpm run lint-ts
 pnpm run typecheck
 pnpm run build
 pnpm run test-ci
 ```
 
-The `lint-md` script lints the Markdown files with markdownlint. The `lint` script lints the code with ESLint, and `lint-fix` also applies the fixes that ESLint can make. Use `pnpm test` to run the tests in watch mode with the Vitest UI.
+The `lint-md` script lints the Markdown files with markdownlint, and the `lint-ts` script lints the code with ESLint. Use `pnpm test` to run the tests in watch mode with the Vitest UI.
 
 ## Changelog and versioning
 
