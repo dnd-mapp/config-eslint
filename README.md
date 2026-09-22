@@ -4,7 +4,7 @@
 [![npm version](https://img.shields.io/npm/v/@dnd-mapp/config-eslint)](https://www.npmjs.com/package/@dnd-mapp/config-eslint)
 [![license](https://img.shields.io/npm/l/@dnd-mapp/config-eslint)](LICENSE)
 
-Shared ESLint configs for all D&D Mapp projects, for JavaScript and TypeScript files. They are [flat configs](https://eslint.org/docs/latest/use/configure/configuration-files) for ESLint 10. The TypeScript config uses type information.
+Shared ESLint configs for JavaScript and TypeScript files. They are [flat configs](https://eslint.org/docs/latest/use/configure/configuration-files) for ESLint 10. The TypeScript config uses type information.
 
 ## Requirements
 
