@@ -29,12 +29,12 @@ Newly published releases are held back for three days through `minimumReleaseAge
 
 [Lefthook](https://lefthook.dev/) installs the Git hooks when you run `pnpm install`. The hooks are defined in `lefthook.yaml`.
 
-| Hook         | Runs                                  | On                        |
-|:-------------|:--------------------------------------|:--------------------------|
-| `pre-commit` | Prettier and markdownlint-cli2 checks | The staged files          |
-| `commit-msg` | commitlint                            | The message of the commit |
+| Hook         | Runs                                           | On                        |
+|:-------------|:-----------------------------------------------|:--------------------------|
+| `pre-commit` | Prettier, markdownlint-cli2, and ESLint checks | The staged files          |
+| `commit-msg` | commitlint                                     | The message of the commit |
 
-The pre-commit hooks only check files. Run `pnpm run format` to fix formatting issues, and stage the result.
+The pre-commit hooks only check files. Run `pnpm run format` and `pnpm run lint-fix` to fix what the tools can, and stage the result.
 
 ## Changing or adding a config
 
@@ -62,20 +62,22 @@ When you add or change a rule, update the README in the same pull request.
 
 Tests use Vitest and lint small code samples. The `javascript` tests use the `Linter` class of ESLint. The `typescript` tests need type information, so they write each sample into a temporary project with a `tsconfig.json` and lint it with the `ESLint` class. Add a test for every rule that you add or change. Coverage must stay above the thresholds in `vitest.config.ts`.
 
-The sources of this repository are TypeScript, so the config does not lint the repository itself. The tests are what verify its behavior.
+The repository lints itself with the configs it publishes. The `eslint.config.ts` file in the root imports the `javascript` and `typescript` configs from `src`, so every source and script file is checked by the rules that consumers get. ESLint 10 loads the TypeScript config file through the type stripping of Node.js, so no extra loader is needed.
 
-Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `typecheck`, `build`, and `test-ci`. Run them yourself before you open a pull request.
+Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `lint`, `typecheck`, `build`, and `test-ci`. Run them yourself before you open a pull request.
 
 ```bash
 pnpm run format-check
 pnpm run format
 pnpm run lint-md
+pnpm run lint
+pnpm run lint-fix
 pnpm run typecheck
 pnpm run build
 pnpm run test-ci
 ```
 
-The `lint-md` script lints the Markdown files with markdownlint. Use `pnpm test` to run the tests in watch mode with the Vitest UI.
+The `lint-md` script lints the Markdown files with markdownlint. The `lint` script lints the code with ESLint, and `lint-fix` also applies the fixes that ESLint can make. Use `pnpm test` to run the tests in watch mode with the Vitest UI.
 
 ## Changelog and versioning
 
