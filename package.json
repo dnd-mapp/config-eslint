@@ -15,7 +15,15 @@
     "type": "git",
     "url": "git+https://github.com/dnd-mapp/config-eslint.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "sideEffects": false,
+  "exports": {},
   "scripts": {
+    "prepublishOnly": "pnpm run build && prepare-dist",
+    "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json",
     "lint-md": "markdownlint-cli2",
     "format": "prettier -w .",
@@ -42,6 +50,7 @@
     "@dnd-mapp/config-markdown": "catalog:markdown",
     "@dnd-mapp/config-prettier": "catalog:prettier",
     "@dnd-mapp/config-typescript": "catalog:",
+    "@dnd-mapp/package-builder": "catalog:",
     "@types/node": "catalog:",
     "lefthook": "catalog:commitlint",
     "markdownlint-cli2": "catalog:markdown",
