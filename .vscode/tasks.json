@@ -9,6 +9,20 @@
             "problemMatcher": []
         },
         {
+            "label": "test",
+            "detail": "Runs the tests in watch mode with the Vitest UI",
+            "type": "shell",
+            "command": "pnpm run test",
+            "problemMatcher": []
+        },
+        {
+            "label": "test-ci",
+            "detail": "Runs the tests once with coverage",
+            "type": "shell",
+            "command": "pnpm run test-ci",
+            "problemMatcher": []
+        },
+        {
             "label": "format",
             "detail": "Formats the repository with Prettier",
             "type": "shell",

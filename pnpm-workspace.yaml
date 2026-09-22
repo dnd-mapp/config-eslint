@@ -38,3 +38,8 @@ catalogs:
     "@dnd-mapp/config-prettier": ~1.1.0
     prettier: ~3.9.7
     prettier-plugin-organize-imports: ~4.3.0
+  vitest:
+    "@vitest/coverage-v8": ~5.0.1
+    "@vitest/ui": ~5.0.1
+    vite: ~8.3.0
+    vitest: ~5.0.1
