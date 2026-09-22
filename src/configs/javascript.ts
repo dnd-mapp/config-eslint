@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import type { Linter } from 'eslint';
 import prettier from 'eslint-config-prettier/flat';
 import { defineConfig } from 'eslint/config';
+import { rules, unusedVarsOptions } from '../rules.ts';
 
 /** The file patterns that the config applies to. */
 export const files = ['**/*.js', '**/*.mjs', '**/*.cjs'];
@@ -15,14 +16,8 @@ const config: Linter.Config[] = defineConfig({
         reportUnusedDisableDirectives: 'error',
     },
     rules: {
-        'curly': ['error', 'all'],
-        'eqeqeq': ['error', 'always'],
-        'no-unused-vars': ['error', { argsIgnorePattern: '^_', ignoreRestSiblings: true }],
-        'no-var': 'error',
-        'object-shorthand': ['error', 'always'],
-        'prefer-arrow-callback': 'error',
-        'prefer-const': 'error',
-        'prefer-template': 'error',
+        ...rules,
+        'no-unused-vars': ['error', unusedVarsOptions],
     },
 });
 

@@ -44,6 +44,8 @@ Build every config with `defineConfig` from `eslint/config` and give it a `name`
 
 Put shared configs such as `@eslint/js` and `eslint-config-prettier` in `extends`, and put the rules of this package in `rules`. The rules of a config object win over the configs in `extends`, so a rule that `eslint-config-prettier` turns off, such as `curly`, can be turned back on there. Only do that with an option that does not conflict with Prettier.
 
+The rules that every config enforces live in `src/rules.ts`. Spread them into the `rules` of each config, so a change reaches every config. When a plugin replaces a core rule with its own version, such as `@typescript-eslint/no-unused-vars`, the config enables the plugin rule with the shared options instead of the core rule.
+
 Keep every config free of options that depend on the project or the environment, such as globals. Consumers add those in their own ESLint configuration.
 
 Shared configs that a config extends are dependencies, so consumers do not install them. ESLint is a peer dependency. Raise its range when you use a rule or an option that older versions do not know.
