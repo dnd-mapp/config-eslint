@@ -12,6 +12,8 @@
     "eslint-config",
     "eslintconfig",
     "javascript",
+    "typescript",
+    "typescript-eslint",
     "linting",
     "shareable-config",
     "config"
@@ -67,10 +69,17 @@
   },
   "dependencies": {
     "@eslint/js": "catalog:eslint",
-    "eslint-config-prettier": "catalog:eslint"
+    "eslint-config-prettier": "catalog:eslint",
+    "typescript-eslint": "catalog:eslint"
   },
   "peerDependencies": {
-    "eslint": "^10"
+    "eslint": "^10",
+    "typescript": "^6"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:commitlint",

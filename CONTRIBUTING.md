@@ -46,20 +46,21 @@ Put shared configs such as `@eslint/js` and `eslint-config-prettier` in `extends
 
 The rules that every config enforces live in `src/rules.ts`. Spread them into the `rules` of each config, so a change reaches every config. When a plugin replaces a core rule with its own version, such as `@typescript-eslint/no-unused-vars`, the config enables the plugin rule with the shared options instead of the core rule.
 
-Keep every config free of options that depend on the project or the environment, such as globals. Consumers add those in their own ESLint configuration.
+Keep every config free of options that depend on the project or the environment, such as globals or `tsconfigRootDir`. Consumers add those in their own ESLint configuration.
 
-Shared configs that a config extends are dependencies, so consumers do not install them. ESLint is a peer dependency. Raise its range when you use a rule or an option that older versions do not know.
+Shared configs that a config extends are dependencies, so consumers do not install them. ESLint is a peer dependency, and TypeScript is an optional peer dependency for the `typescript` config. Raise their ranges when you use a rule or an option that older versions do not know.
 
 The `build` script compiles the sources to JavaScript and type declarations in `dist`. The `prepublishOnly` script runs it, and then runs `prepare-dist` from `@dnd-mapp/package-builder`. That command writes the trimmed `package.json`, copies the files listed in `.prepare-distrc.json`, and checks the `exports`. Run `pnpm run typecheck` to type check the sources without emitting anything.
 
 When you add or change a rule, update the README in the same pull request.
 
 - Update the "Available configs" table when you add a config.
-- Update the "What `javascript` sets" section when you change the rules of `javascript`.
+- Update the "Shared rules" section when you change the rules in `src/rules.ts`.
+- Update the "What `javascript` sets" or "What `typescript` sets" section when you change the layers of that config.
 
 ## Building and testing
 
-Tests use Vitest and lint small code samples with the `Linter` class of ESLint. Add a test for every rule that you add or change. Coverage must stay above the thresholds in `vitest.config.ts`.
+Tests use Vitest and lint small code samples. The `javascript` tests use the `Linter` class of ESLint. The `typescript` tests need type information, so they write each sample into a temporary project with a `tsconfig.json` and lint it with the `ESLint` class. Add a test for every rule that you add or change. Coverage must stay above the thresholds in `vitest.config.ts`.
 
 The sources of this repository are TypeScript, so the config does not lint the repository itself. The tests are what verify its behavior.
 
