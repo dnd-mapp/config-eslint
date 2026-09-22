@@ -1,12 +1,21 @@
 {
   "$schema": "https://www.schemastore.org/package.json",
   "name": "@dnd-mapp/config-eslint",
-  "description": "",
+  "description": "ESLint configuration shared across D&D Mapp projects.",
   "version": "0.0.0",
   "license": "MIT",
   "type": "module",
   "author": "D&D Mapp",
-  "keywords": [],
+  "keywords": [
+    "dnd-mapp",
+    "eslint",
+    "eslint-config",
+    "eslintconfig",
+    "javascript",
+    "linting",
+    "shareable-config",
+    "config"
+  ],
   "homepage": "https://github.com/dnd-mapp/config-eslint#readme",
   "bugs": {
     "url": "https://github.com/dnd-mapp/config-eslint/issues"
@@ -20,7 +29,17 @@
     "directory": "dist"
   },
   "sideEffects": false,
-  "exports": {},
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./*": {
+      "types": "./configs/*.d.ts",
+      "default": "./configs/*.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "prepublishOnly": "pnpm run build && prepare-dist",
     "build": "tsc -p tsconfig.build.json",
@@ -46,6 +65,13 @@
       "onFail": "error"
     }
   },
+  "dependencies": {
+    "@eslint/js": "catalog:eslint",
+    "eslint-config-prettier": "catalog:eslint"
+  },
+  "peerDependencies": {
+    "eslint": "^10"
+  },
   "devDependencies": {
     "@commitlint/cli": "catalog:commitlint",
     "@dnd-mapp/config-commitlint": "catalog:commitlint",
@@ -56,6 +82,7 @@
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:vitest",
     "@vitest/ui": "catalog:vitest",
+    "eslint": "catalog:eslint",
     "lefthook": "catalog:commitlint",
     "markdownlint-cli2": "catalog:markdown",
     "prettier": "catalog:prettier",
