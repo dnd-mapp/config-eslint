@@ -44,6 +44,13 @@
             "problemMatcher": []
         },
         {
+            "label": "lint-ts",
+            "detail": "Lints the code of the repository with ESLint",
+            "type": "shell",
+            "command": "pnpm run lint-ts",
+            "problemMatcher": ["$eslint-stylish"]
+        },
+        {
             "label": "typecheck",
             "detail": "Type checks the sources and scripts with the TypeScript compiler",
             "type": "shell",

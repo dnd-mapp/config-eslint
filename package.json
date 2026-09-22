@@ -48,6 +48,7 @@
     "test": "vitest --ui",
     "test-ci": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
+    "lint-ts": "eslint",
     "lint-md": "markdownlint-cli2",
     "format": "prettier -w .",
     "format-check": "prettier -c ."
