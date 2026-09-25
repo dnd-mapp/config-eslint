@@ -10,7 +10,7 @@ Shared ESLint configs for JavaScript and TypeScript files. They are [flat config
 
 - ESLint 10 is a peer dependency and must be installed in your project.
 - TypeScript 6 is an optional peer dependency. Install it to use the `typescript` config, and give your project a `tsconfig.json` that includes the linted files.
-- Node.js 24.21 or a later 24.x release, matching the `engines` field.
+- A Node.js version that matches the `engines` field of the package.
 
 ## Installation
 

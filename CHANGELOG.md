@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- `@eslint/js`, `eslint-config-prettier`, and `typescript-eslint` are now declared with caret ranges instead of tilde ranges. Consumers get their minor releases without waiting for a new release of this package.
+
 ## [1.0.0] - 2026-09-22
 
 ### Added
