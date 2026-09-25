@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-25
+
 ### Changed
 
 - `@eslint/js`, `eslint-config-prettier`, and `typescript-eslint` are now declared with caret ranges instead of tilde ranges. Consumers get their minor releases without waiting for a new release of this package.
@@ -21,5 +23,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Type declarations for every config. Each one is typed as an array of ESLint `Linter.Config` objects.
 - ESLint 10 as a peer dependency and TypeScript 6 as an optional peer dependency. `@eslint/js`, `eslint-config-prettier`, and `typescript-eslint` are regular dependencies, so consumers do not install them.
 
-[Unreleased]: https://github.com/dnd-mapp/config-eslint/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/dnd-mapp/config-eslint/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/dnd-mapp/config-eslint/releases/tag/v1.1.0
 [1.0.0]: https://github.com/dnd-mapp/config-eslint/releases/tag/v1.0.0
