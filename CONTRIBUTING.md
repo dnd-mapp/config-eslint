@@ -22,6 +22,8 @@ Dependency versions live in the catalogs in `pnpm-workspace.yaml`, which uses `c
 
 Newly published releases are held back for three days through `minimumReleaseAge`. You may need to wait before you can bump to a very recent version.
 
+Install [actionlint](https://github.com/rhysd/actionlint) to lint the workflows locally, for example with `brew install actionlint`. CI runs the version that `.github/actions/ci/action.yaml` pins.
+
 ## Git hooks
 
 [Lefthook](https://lefthook.dev/) installs the Git hooks when you run `pnpm install`. The hooks are defined in `lefthook.yaml`.
@@ -61,7 +63,7 @@ Tests use Vitest and lint small code samples. The `javascript` tests use the `Li
 
 The repository lints itself with the configs it publishes. The `eslint.config.ts` file in the root imports the `javascript` and `typescript` configs from `src`, so every source and script file is checked by the rules that consumers get. ESLint 10 loads the TypeScript config file through the type stripping of Node.js, so no extra loader is needed.
 
-Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `lint-ts`, `typecheck`, `build`, and `test-ci`. Run them yourself before you open a pull request.
+Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `lint-ts`, `typecheck`, `build`, `test-ci`, and actionlint. Run them yourself before you open a pull request.
 
 ```bash
 pnpm run format-check
@@ -71,6 +73,7 @@ pnpm run lint-ts
 pnpm run typecheck
 pnpm run build
 pnpm run test-ci
+actionlint
 ```
 
 The `lint-md` script lints the Markdown files with markdownlint, and the `lint-ts` script lints the code with ESLint. Use `pnpm test` to run the tests in watch mode with the Vitest UI.
